@@ -38,7 +38,8 @@ const App = () => {
               level={5}
               style={{ color: "white", textAlign: "center" }}
             >
-              Copyright © 2022 <Link to="/">Crypto Tracker Inc.</Link> <br />
+              Copyright © {new Date().getFullYear()}{" "}
+              <Link to="/">Crypto Tracker Inc.</Link> <br />
               All Rights Reserved.
             </Typography.Title>
             <Space>
