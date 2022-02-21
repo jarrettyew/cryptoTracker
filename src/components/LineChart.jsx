@@ -1,9 +1,28 @@
 import React from "react";
-import { Chart as ChartJS } from "chart.js/auto";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Col, Row, Typography } from "antd";
 
-const { Title } = Typography;
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const { Title: NewTitle } = Typography;
 
 const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   const coinPrice = [];
@@ -43,22 +62,22 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     },
   };
 
-  console.log(data);
+  console.log(data.datasets[0].data);
   console.log(options);
 
   return (
     <>
       <Row className="chart-header">
-        <Title level={2} className="chart-title">
+        <NewTitle level={2} className="chart-title">
           {coinName} Price Chart{" "}
-        </Title>
+        </NewTitle>
         <Col className="price-container">
-          <Title level={5} className="price-change">
+          <NewTitle level={5} className="price-change">
             Change: {coinHistory?.data?.change}%
-          </Title>
-          <Title level={5} className="current-price">
+          </NewTitle>
+          <NewTitle level={5} className="current-price">
             Current {coinName} Price: $ {currentPrice}
-          </Title>
+          </NewTitle>
         </Col>
       </Row>
       <Line data={data} options={options} />
